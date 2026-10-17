@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="GlobalTrade Load Test">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="HOST" elementType="Argument"><stringProp name="Argument.name">HOST</stringProp><stringProp name="Argument.value">localhost</stringProp></elementProp>
+          <elementProp name="PORT" elementType="Argument"><stringProp name="Argument.name">PORT</stringProp><stringProp name="Argument.value">8080</stringProp></elementProp>
+          <elementProp name="CONTEXT" elementType="Argument"><stringProp name="Argument.name">CONTEXT</stringProp><stringProp name="Argument.value">GlobalTrade</stringProp></elementProp>
+          <elementProp name="USERNAME" elementType="Argument"><stringProp name="Argument.name">USERNAME</stringProp><stringProp name="Argument.value">admin</stringProp></elementProp>
+          <elementProp name="PASSWORD" elementType="Argument"><stringProp name="Argument.name">PASSWORD</stringProp><stringProp name="Argument.value">Admin@123</stringProp></elementProp>
+        </collectionProp>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SCM Users">
+        <intProp name="ThreadGroup.num_threads">20</intProp>
+        <intProp name="ThreadGroup.ramp_time">10</intProp>
+        <longProp name="ThreadGroup.duration">60</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager"><collectionProp name="CookieManager.cookies"/><boolProp name="CookieManager.clearEachIteration">false</boolProp></CookieManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login">
+          <stringProp name="HTTPSampler.domain">${HOST}</stringProp><stringProp name="HTTPSampler.port">${PORT}</stringProp><stringProp name="HTTPSampler.path">/${CONTEXT}/login</stringProp><stringProp name="HTTPSampler.method">POST</stringProp><boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments"><collectionProp name="Arguments.arguments"><elementProp name="username" elementType="HTTPArgument"><boolProp name="HTTPArgument.always_encode">true</boolProp><stringProp name="Argument.name">username</stringProp><stringProp name="Argument.value">${USERNAME}</stringProp></elementProp><elementProp name="password" elementType="HTTPArgument"><boolProp name="HTTPArgument.always_encode">true</boolProp><stringProp name="Argument.name">password</stringProp><stringProp name="Argument.value">${PASSWORD}</stringProp></elementProp></collectionProp></elementProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Dashboard">
+          <stringProp name="HTTPSampler.domain">${HOST}</stringProp><stringProp name="HTTPSampler.port">${PORT}</stringProp><stringProp name="HTTPSampler.path">/${CONTEXT}/dashboard</stringProp><stringProp name="HTTPSampler.method">GET</stringProp><boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Shipments">
+          <stringProp name="HTTPSampler.domain">${HOST}</stringProp><stringProp name="HTTPSampler.port">${PORT}</stringProp><stringProp name="HTTPSampler.path">/${CONTEXT}/shipments</stringProp><stringProp name="HTTPSampler.method">GET</stringProp><boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inventory">
+          <stringProp name="HTTPSampler.domain">${HOST}</stringProp><stringProp name="HTTPSampler.port">${PORT}</stringProp><stringProp name="HTTPSampler.path">/${CONTEXT}/inventory</stringProp><stringProp name="HTTPSampler.method">GET</stringProp><boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="System Status API">
+          <stringProp name="HTTPSampler.domain">${HOST}</stringProp><stringProp name="HTTPSampler.port">${PORT}</stringProp><stringProp name="HTTPSampler.path">/${CONTEXT}/api/status</stringProp><stringProp name="HTTPSampler.method">GET</stringProp><boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

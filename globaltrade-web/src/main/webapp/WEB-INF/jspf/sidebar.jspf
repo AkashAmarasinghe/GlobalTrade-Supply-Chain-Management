@@ -1,0 +1,137 @@
+<aside class="sidebar" id="sidebar" data-context-path="${pageContext.request.contextPath}">
+    <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+            <span class="brand-orbit">
+            </span>
+            <span class="brand-core">
+                GT
+            </span>
+        </div>
+        <div>
+            <div class="brand-name">
+                GlobalTrade
+            </div>
+            <div class="brand-subtitle">
+                Logistics Corporation
+            </div>
+        </div>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+        <div class="nav-section-label">
+            Operations
+        </div>
+        <a class="nav-link" data-nav="dashboard" href="${pageContext.request.contextPath}/dashboard">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#dashboard">
+                </use>
+            </svg>
+            <span>
+                Dashboard
+            </span>
+        </a>
+        <a class="nav-link" data-nav="shipments" href="${pageContext.request.contextPath}/shipments">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#truck">
+                </use>
+            </svg>
+            <span>
+                Shipments
+            </span>
+        </a>
+        <a class="nav-link" data-nav="inventory" href="${pageContext.request.contextPath}/inventory">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#boxes">
+                </use>
+            </svg>
+            <span>
+                Inventory
+            </span>
+        </a>
+        <a class="nav-link" data-nav="vendors" href="${pageContext.request.contextPath}/vendors">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#users">
+                </use>
+            </svg>
+            <span>
+                Vendors
+            </span>
+        </a>
+        <a class="nav-link" data-nav="customs" href="${pageContext.request.contextPath}/customs">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#file">
+                </use>
+            </svg>
+            <span>
+                Customs & Compliance
+            </span>
+        </a>
+        <a class="nav-link" data-nav="route" href="${pageContext.request.contextPath}/route-optimization">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#route">
+                </use>
+            </svg>
+            <span>
+                Route Optimization
+            </span>
+        </a>
+        <div class="nav-section-label">
+            Governance
+        </div>
+        <a class="nav-link" data-nav="audit" href="${pageContext.request.contextPath}/audit">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#history">
+                </use>
+            </svg>
+            <span>
+                Audit Logs
+            </span>
+        </a>
+        <% if ("ADMIN".equals(String.valueOf(session.getAttribute("role")))) { %>
+        <a class="nav-link" data-nav="access-control" href="${pageContext.request.contextPath}/access-control">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#shield">
+                </use>
+            </svg>
+            <span>
+                Access Control
+            </span>
+        </a>
+        <% } %>
+
+        <a class="nav-link" data-nav="monitoring" href="${pageContext.request.contextPath}/monitoring">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#activity">
+                </use>
+            </svg>
+            <span>
+                System Monitoring
+            </span>
+        </a>
+    </nav>
+    <div class="sidebar-foot">
+        <a class="availability alert-status-link" href="${pageContext.request.contextPath}/monitoring">
+            <span class="status-dot online">
+            </span>
+            <div>
+                <strong>
+                    Enterprise Services
+                </strong>
+                <small>
+                    <span id="globalAlertBadge">
+                        0
+                    </span>
+                    open alerts • live monitoring
+                </small>
+            </div>
+        </a>
+        <a class="logout-link" href="${pageContext.request.contextPath}/logout">
+            <svg>
+                <use href="${pageContext.request.contextPath}/assets/icons.svg#logout">
+                </use>
+            </svg>
+            Sign out
+        </a>
+    </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay">
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.0">
+    <persistence-unit name="GlobalTradePU" transaction-type="JTA">
+        <jta-data-source>jdbc/GlobalTradeDS</jta-data-source>
+
+        <class>com.globaltrade.entity.Role</class>
+        <class>com.globaltrade.entity.User</class>
+        <class>com.globaltrade.entity.Vendor</class>
+        <class>com.globaltrade.entity.InventoryItem</class>
+        <class>com.globaltrade.entity.Shipment</class>
+        <class>com.globaltrade.entity.ShipmentItem</class>
+        <class>com.globaltrade.entity.CustomsDocument</class>
+        <class>com.globaltrade.entity.VendorPerformance</class>
+        <class>com.globaltrade.entity.AuditLog</class>
+        <class>com.globaltrade.entity.SystemAlert</class>
+
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+        </properties>
+    </persistence-unit>
+</persistence>

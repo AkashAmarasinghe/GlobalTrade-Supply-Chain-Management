@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "https://raw.githubusercontent.com/payara/Payara-Documentation/master/docs/modules/ROOT/pages/Appendix/Schemas/payara-resources_1_7.dtd">
+<resources>
+
+    <jdbc-connection-pool name="global_trade_pool"
+                          res-type="javax.sql.DataSource"
+                          datasource-classname="com.mysql.cj.jdbc.MysqlDataSource"
+                          steady-pool-size="2"
+                          max-pool-size="32">
+        <property name="URL" value="jdbc:mysql://localhost:3306/globaltrade?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Colombo"/>
+        <property name="User" value="root"/>
+        <property name="Password" value=""/>
+    </jdbc-connection-pool>
+    <jdbc-resource enabled="true"
+                   jndi-name="jdbc/GlobalTradeDS"
+                   object-type="user"
+                   pool-name="global_trade_pool">
+        <description>GlobalTrade application-scoped MySQL datasource</description>
+    </jdbc-resource>
+</resources>
